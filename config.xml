@@ -30,20 +30,16 @@ WOJenkins change regularly and you run the risk of this job breaking if you aren
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
-          <name>WO_VERSION</name>
-          <description>The version of WebObjects to build against or embed in your project.</description>
+          <name>WONDER_BRANCH</name>
+          <description>Which Wonder branch do you want to run. For WO 5.4.3 projects the default &lt;b&gt;master&lt;/b&gt; is what you want. For WO 5.3.3 projects you must use the Wonder_5_0_0_Legacy branch.</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>5.4.3</string>
-              <string>5.3.3</string>
+              <string>master</string>
+              <string>Wonder_5_0_0_Legacy</string>
+              <string>integration</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>WONDER_BRANCH</name>
-          <description>The branch of Wonder that you want to build. The default is &lt;b&gt;master&lt;/b&gt; but it could set to &lt;b&gt;MyBranch&lt;/b&gt; instead.</description>
-          <defaultValue>master</defaultValue>
-        </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>BUILD_TARGETS</name>
           <description>Which Wonder build target do you want to run. For most projects the default &lt;b&gt;frameworks frameworks.install&lt;/b&gt; is what you want.</description>
@@ -65,48 +61,48 @@ WOJenkins change regularly and you run the risk of this job breaking if you aren
         <configVersion>2</configVersion>
         <userRemoteConfigs>
           <hudson.plugins.git.UserRemoteConfig>
-            <name>origin</name>
-            <refspec>+refs/heads/${WONDER_BRANCH}:refs/remotes/origin/${WONDER_BRANCH}</refspec>
-            <url>git://github.com/projectwonder/wonder.git</url>
+            <name></name>
+            <refspec></refspec>
+            <url>git://github.com/cocktail-office/WOJenkins.git</url>
           </hudson.plugins.git.UserRemoteConfig>
         </userRemoteConfigs>
         <branches>
           <hudson.plugins.git.BranchSpec>
-            <name>origin/${WONDER_BRANCH}</name>
+            <name>master</name>
           </hudson.plugins.git.BranchSpec>
         </branches>
         <disableSubmodules>false</disableSubmodules>
         <recursiveSubmodules>false</recursiveSubmodules>
         <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
         <authorOrCommitter>false</authorOrCommitter>
-        <clean>true</clean>
+        <clean>false</clean>
         <wipeOutWorkspace>false</wipeOutWorkspace>
         <pruneBranches>false</pruneBranches>
         <remotePoll>false</remotePoll>
         <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
         <gitTool>Default</gitTool>
         <submoduleCfg class="list"/>
-        <relativeTargetDir>../../../WOFrameworksRepository/ProjectWOnder/GitRepositoryClone</relativeTargetDir>
+        <relativeTargetDir>WOJenkins</relativeTargetDir>
         <reference></reference>
         <excludedRegions></excludedRegions>
         <excludedUsers></excludedUsers>
         <gitConfigName></gitConfigName>
         <gitConfigEmail></gitConfigEmail>
         <skipTag>false</skipTag>
-        <scmName>Wonder</scmName>
+        <scmName></scmName>
       </hudson.plugins.git.GitSCM>
       <hudson.plugins.git.GitSCM>
         <configVersion>2</configVersion>
         <userRemoteConfigs>
           <hudson.plugins.git.UserRemoteConfig>
-            <name>WOFrameworksRepository</name>
-            <refspec>+refs/heads/${WONDER_BRANCH}:refs/remotes/WOFrameworksRepository/${WONDER_BRANCH}</refspec>
-            <url>${JENKINS_HOME}/WOFrameworksRepository/ProjectWOnder/GitRepositoryClone/</url>
+            <name></name>
+            <refspec></refspec>
+            <url>git://github.com/cocktail-office/wonder.git</url>
           </hudson.plugins.git.UserRemoteConfig>
         </userRemoteConfigs>
         <branches>
           <hudson.plugins.git.BranchSpec>
-            <name>WOFrameworksRepository/${WONDER_BRANCH}</name>
+            <name>${WONDER_BRANCH}</name>
           </hudson.plugins.git.BranchSpec>
         </branches>
         <disableSubmodules>false</disableSubmodules>
@@ -127,41 +123,7 @@ WOJenkins change regularly and you run the risk of this job breaking if you aren
         <gitConfigName></gitConfigName>
         <gitConfigEmail></gitConfigEmail>
         <skipTag>false</skipTag>
-        <scmName>WOFrameworksRepository_Wonder</scmName>
-      </hudson.plugins.git.GitSCM>
-      <hudson.plugins.git.GitSCM>
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <name>origin</name>
-            <refspec>+refs/heads/master:refs/remotes/origin/master</refspec>
-            <url>git://github.com/avendasora/WOJenkins.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>origin/master</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <disableSubmodules>false</disableSubmodules>
-        <recursiveSubmodules>false</recursiveSubmodules>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <authorOrCommitter>true</authorOrCommitter>
-        <clean>true</clean>
-        <wipeOutWorkspace>false</wipeOutWorkspace>
-        <pruneBranches>true</pruneBranches>
-        <remotePoll>false</remotePoll>
-        <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
-        <gitTool>Default</gitTool>
-        <submoduleCfg class="list"/>
-        <relativeTargetDir>WOJenkins</relativeTargetDir>
-        <reference></reference>
-        <excludedRegions></excludedRegions>
-        <excludedUsers></excludedUsers>
-        <gitConfigName></gitConfigName>
-        <gitConfigEmail></gitConfigEmail>
-        <skipTag>false</skipTag>
-        <scmName>WOJenkins</scmName>
+        <scmName></scmName>
       </hudson.plugins.git.GitSCM>
     </scms>
   </scm>
@@ -171,8 +133,7 @@ WOJenkins change regularly and you run the risk of this job breaking if you aren
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector">
     <hudson.triggers.SCMTrigger>
-      <spec># Every Hour, On the Hour.
-0 */1 * * *</spec>
+      <spec># Every Hour, On the Hour.0 */1 * * *</spec>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
@@ -188,4 +149,5 @@ ${WORKSPACE}/WOJenkins/Build/Wonder/WorkspaceSetupScripts/Git/setupWonderWorkspa
   </builders>
   <publishers/>
   <buildWrappers/>
+  <runSequentially>false</runSequentially>
 </project>
